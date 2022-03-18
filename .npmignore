@@ -1,5 +1,12 @@
 .editorconfig
 .gitignore
+.swc
+.swc.build
 .yarn
+.prettierrc
+.eslintrc.js
+commitlint.config.js
 node_modules
+src
 yarn.lock
+tsconfig

@@ -1,10 +1,41 @@
 {
   "name": "functional-iac",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
   "repository": "git@github.com:samsan1212/functional-iac.git",
   "author": "Tsz San Sam, CHAN <samchan148@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "build": "swc ./src -d lib --no-swcrc --config-file .swcrc.build",
+    "clean": "rimraf ./lib",
+    "lint": "eslint",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable",
+    "prepublishOnly": "pinst --disable",
+    "test": "jest --passWithNoTests",
+    "type": "tsc --declaration --emitDeclarationOnly"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.0.1",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.124",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "husky": "^7.0.0",
+    "jest": "^27.5.1",
+    "pinst": "^2.1.6",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  }
 }
