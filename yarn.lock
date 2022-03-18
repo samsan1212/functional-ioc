@@ -2979,9 +2979,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"functional-iac@workspace:.":
+"functional-ioc@workspace:.":
   version: 0.0.0-use.local
-  resolution: "functional-iac@workspace:."
+  resolution: "functional-ioc@workspace:."
   dependencies:
     "@commitlint/cli": ^16.0.1
     "@commitlint/config-conventional": ^16.0.0

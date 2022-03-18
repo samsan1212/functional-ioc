@@ -1,12 +1,11 @@
 {
-  "name": "functional-iac",
-  "version": "0.0.3",
+  "name": "functional-ioc",
+  "version": "0.0.2",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
   "repository": "git@github.com:samsan1212/functional-iac.git",
   "author": "Tsz San Sam, CHAN <samchan148@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.2.0",
   "scripts": {
     "build": "swc ./src -d lib --no-swcrc --config-file .swcrc.build",
     "clean": "rimraf ./lib",
