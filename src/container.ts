@@ -1,9 +1,11 @@
 import type { Module } from "./types";
 
 export async function importModule<T>(dynamicIocModule: Promise<Module<T>>) {
-  const { __init__, ...mod } = await dynamicIocModule;
+  const dynamicMod = await dynamicIocModule;
 
-  if (__init__) await __init__();
+  if (dynamicMod.__init__) await dynamicMod.__init__();
+
+  const { __init__, ...mod } = dynamicMod;
 
   return mod;
 }
@@ -14,9 +16,9 @@ export async function importModule<T>(dynamicIocModule: Promise<Module<T>>) {
  * please make sure the `__init__` function is also sync
  */
 export function importModuleSync<T>(iocModule: Module<T>) {
-  const { __init__, ...mod } = iocModule;
+  if (iocModule.__init__) iocModule.__init__();
 
-  if (__init__) __init__();
+  const { __init__, ...mod } = iocModule;
 
   return mod;
 }
