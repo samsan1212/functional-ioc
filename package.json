@@ -1,6 +1,6 @@
 {
   "name": "functional-ioc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
   "repository": "git@github.com:samsan1212/functional-iac.git",
