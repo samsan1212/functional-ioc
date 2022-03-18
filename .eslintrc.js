@@ -24,14 +24,7 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: [
-    "lib",
-    "jest*.js",
-    "spack.config.js",
-    ".eslintrc.js",
-    "cdk",
-    "scripts",
-  ],
+  ignorePatterns: ["lib", "jest*.js", "spack.config.js", ".eslintrc.js", "cdk", "scripts"],
   rules: {
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -44,7 +37,7 @@ module.exports = {
         vars: "all",
         argsIgnorePattern: "^_",
         args: "after-used",
-        ignoreRestSiblings: false,
+        ignoreRestSiblings: true,
       },
     ],
     "no-duplicate-imports": "off",
@@ -54,16 +47,7 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type",
-        ],
+        groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
         alphabetize: {
           order: "asc",
           caseInsensitive: false,
