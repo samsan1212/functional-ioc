@@ -1,6 +1,11 @@
-import type { Module } from "./types";
+import type { Module, IoCModule } from "./types";
 
-export async function importModule<T>(dynamicIocModule: Promise<Module<T>>) {
+const modulePool = new WeakMap<Module<unknown> | Promise<Module<unknown>>, IoCModule<unknown>>();
+
+export async function importModule<T>(dynamicIocModule: Promise<Module<T>>): Promise<IoCModule<T>> {
+  const moduleInPool = modulePool.get(dynamicIocModule);
+  if (moduleInPool) return moduleInPool as IoCModule<T>;
+
   const dynamicMod = await dynamicIocModule;
 
   if (dynamicMod.__init__ && !dynamicMod.__init__.loaded) {
@@ -10,6 +15,8 @@ export async function importModule<T>(dynamicIocModule: Promise<Module<T>>) {
 
   const { __init__, ...mod } = dynamicMod;
 
+  modulePool.set(dynamicIocModule, mod);
+
   return mod;
 }
 
@@ -18,13 +25,18 @@ export async function importModule<T>(dynamicIocModule: Promise<Module<T>>) {
  *
  * please make sure the `__init__` function is also sync
  */
-export function importModuleSync<T>(iocModule: Module<T>) {
+export function importModuleSync<T>(iocModule: Module<T>): IoCModule<T> {
+  const moduleInPool = modulePool.get(iocModule);
+  if (moduleInPool) return moduleInPool as IoCModule<T>;
+
   if (iocModule.__init__ && !iocModule.__init__.loaded) {
     iocModule.__init__();
     iocModule.__init__.loaded = true;
   }
 
   const { __init__, ...mod } = iocModule;
+
+  modulePool.set(iocModule, mod);
 
   return mod;
 }
